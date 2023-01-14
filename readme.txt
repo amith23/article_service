@@ -1,6 +1,5 @@
 header interceptor
-loging interceptor
-auth interceptor
+
 
 heatoes
 micro meter
