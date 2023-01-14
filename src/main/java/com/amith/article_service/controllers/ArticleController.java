@@ -20,15 +20,9 @@ public class ArticleController {
 
 	@GetMapping("/api/articles/{id}")
 	public List<Article> getArticles(@PathVariable String id) {
-		if (logger.isDebugEnabled()) {
-			logger.debug("getArticles invoked for corelation id : {id} | Input parameter id : {id} ", id, id);
-		}
 
 		List<Article> samples = generateSampleArticles();
 
-		if (logger.isDebugEnabled()) {
-			logger.debug("getArticles responded for corelation id : {id} | response : {samples} ", id, samples);
-		}
 		return samples;
 	}
 
@@ -44,12 +38,13 @@ public class ArticleController {
 		articles.add(sample1);
 
 		Article sample2 = new Article();
-		sample1.setLink("http://sample2");
-		sample1.setName("sample 2");
-		sample1.setPublishedDate(new Date());
-		sample1.setPublusher(Publusher.LINKED_IN);
+		sample2.setLink("http://sample2");
+		sample2.setName("sample 2");
+		sample2.setPublishedDate(new Date());
+		sample2.setPublusher(Publusher.LINKED_IN);
 
 		articles.add(sample2);
+		articles.add(sample1);
 
 		return articles;
 	}
