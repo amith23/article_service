@@ -1,6 +1,10 @@
 version: 0.2
 
 phases:
+  install:
+    commands:
+      - apt-get install maven
+      
   pre_build:
     commands:
       - echo "executing pre build"
