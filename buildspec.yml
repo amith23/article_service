@@ -9,14 +9,14 @@ phases:
     commands:
       - echo "executing pre build"
       - echo "establish connection with ECR"
-      - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 477827136140.dkr.ecr.us-east-1.amazonaws.com
+      - aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/c7v2n4l4
   build:
     commands:
       - mvn package
       - echo "Building docker image"
-      - docker build -t article_service .
-      - docker tag article_service:latest 477827136140.dkr.ecr.us-east-1.amazonaws.com/article_service:latest
-      - docker push 477827136140.dkr.ecr.us-east-1.amazonaws.com/article_service:latest
+      - docker docker build -t article_service_public .
+      - docker tag article_service_public:latest public.ecr.aws/c7v2n4l4/article_service_public:latest
+      - docker push public.ecr.aws/c7v2n4l4/article_service_public:latest
   post_build:
     commands:
       - printf '[{"name":"container_name","imageUri":"image_URI"}]' > imagedefinitions.json
