@@ -14,7 +14,7 @@ phases:
     commands:
       - mvn package
       - echo "Building docker image"
-      - docker docker build -t article_service_public .
+      - docker build -t article_service_public .
       - docker tag article_service_public:latest public.ecr.aws/c7v2n4l4/article_service_public:latest
       - docker push public.ecr.aws/c7v2n4l4/article_service_public:latest
   post_build:
